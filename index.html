@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Dynamic Page Loader</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@yohns/picocss@2.2.1/css/pico.min.css" />
+	<style>
+		#main-content {
+			transition: filter 0.3s;
+		}
+		#loading-overlay {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: rgba(0, 0, 0, 0.5);
+			color: white;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 1.5em;
+			z-index: 1000;
+			display: none;
+		}
+	</style>
+</head>
+<body>
+<main class="container">
+	<nav>
+		<a href="data/page1.json" class="load-page">Load Page 1</a>
+		<a href="data/page2.json" class="load-page">Load Page 2</a>
+		<button data-load="data/page3.json" class="load-page" type="button">Load Page 3</button>
+	</nav>
+	<div id="loading-overlay">Loading...</div>
+	<div id="main-content">
+		<h1 id="title">Welcome</h1>
+		<p id="description">Click a link to load content.</p>
+	</div>
+</main>
+<script src="assets/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<article id="popover">
+	<header>
+		<h2>Popovers</h2>
+		<p>Popovers will replace the notifications below.</p>
+	</header>
+	<button class="action" popovertarget="popover-example1">Backdrop Close</button>
+	<button popovertarget="popover-example2" popovertargetaction="show">Manual Close</button>
+	<article id="popover-example1" popover>
+		<header>
+			<h2>Popover</h2>
+		</header> Click/Tap everywhere else to close <footer>Footer</footer>
+	</article>
+	<article id="popover-example2" popover="manual"> Some Feedback Message With Close Button <button
+			popovertarget="popover-example2" popovertargetaction="hide">&times;</button>
+	</article>
+</article>

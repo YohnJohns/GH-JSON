@@ -7,7 +7,8 @@ class FileValidator {
 	 */
 	constructor(fileInput, displayList = true, customListContainer = null) {
 		if (!(fileInput instanceof HTMLInputElement) || fileInput.type !== "file") {
-			throw new Error("FileValidator requires an input element of type 'file'.");
+			console.warn("FileValidator requires an input element of type 'file'.");
+			return;
 		}
 
 		this.fileInput = fileInput;
@@ -137,6 +138,27 @@ class FileValidator {
 			if (type.endsWith("/*")) return file.type.startsWith(type.split("/")[0] + "/");
 			return false;
 		});
+	}
+
+	/**
+	 * Destroys the FileValidator instance, removing event listeners and clearing DOM modifications.
+	 */
+	destroy() {
+		// Remove event listener on file input
+		this.fileInput.removeEventListener("change", this.validateFiles);
+
+		// Remove the file list container from the DOM if it exists
+		if (this.fileListContainer && this.fileListContainer.parentNode) {
+			this.fileListContainer.remove();
+		}
+
+		// Clear properties
+		this.fileInput = null;
+		this.fileListContainer = null;
+		this.customListContainer = null;
+		this.displayList = null;
+
+		console.log("FileValidator instance destroyed.");
 	}
 }
 

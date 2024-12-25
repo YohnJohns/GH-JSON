@@ -52,8 +52,8 @@ class PicoTabs {
 
 	init() {
 		this.tabs.forEach((tab, index) => {
-			tab.addEventListener("click", () => this.activateTab(index));
-			tab.addEventListener("keydown", (e) => this.handleKeyDown(e, index));
+			tab.addEventListener("click", this.activateTabHandler = () => this.activateTab(index));
+			tab.addEventListener("keydown", this.keyDownHandler = (e) => this.handleKeyDown(e, index));
 		});
 	}
 
@@ -97,6 +97,27 @@ class PicoTabs {
 			default:
 				break;
 		}
+	}
+
+	destroy() {
+		if (this.tabs) {
+			this.tabs.forEach((tab) => {
+				tab.removeEventListener("click", this.activateTabHandler);
+				tab.removeEventListener("keydown", this.keyDownHandler);
+				tab.setAttribute("aria-selected", "false");
+				tab.setAttribute("tabindex", "-1");
+			});
+		}
+
+		if (this.panels) {
+			this.panels.forEach((panel) => {
+				panel.setAttribute("hidden", "true");
+			});
+		}
+
+		this.tabListContainer = null;
+		this.tabs = null;
+		this.panels = null;
 	}
 }
 //document.addEventListener("DOMContentLoaded", () => {

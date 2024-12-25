@@ -1,0 +1,80 @@
+<!-- Modal -->
+<article id="modal">
+	<header>
+		<h2>Modal</h2>
+	</header>
+	<div class="grid">
+		<button class="contrast" data-target="modal-example" onclick="toggleModal(event)"> Launch Demo Modal </button>
+		<button data-target="modal-form-example" onclick="toggleModal(event)"> Launch Form Modal </button>
+	</div>
+</article>
+<!-- Modal example -->
+<dialog id="modal-example">
+	<article>
+		<header>
+			<button aria-label="Close" rel="prev" data-target="modal-example" onclick="toggleModal(event)"></button>
+			<h3>Confirm your action!</h3>
+		</header>
+		<p>Cras sit amet maximus risus. Pellentesque sodales odio sit amet augue finibus pellentesque. Nullam finibus risus
+			non semper euismod.</p>
+		<footer>
+			<button role="button" class="secondary" data-target="modal-example" onclick="toggleModal(event)">Cancel</button>
+			<button autofocus data-target="modal-example" onclick="toggleModal(event)"> Confirm </button>
+		</footer>
+	</article>
+</dialog>
+<dialog id="modal-form-example">
+	<article>
+		<form action="javascript:void(0);" method="POST">
+			<header>
+				<button aria-label="Close" rel="prev" data-target="modal-form-example" onclick="toggleModal(event)"></button>
+				<h3>Modal with a Form!</h3>
+			</header>
+			<section role="form">
+				<input autofocus type="text" name="mf-name" id="mf-name" placeholder="Name" aria-labelledby="mf-name-label">
+				<label for="mf-name" id="mf-name-label">Name</label>
+			</section>
+			<section role="form">
+				<input type="password" name="mf-pass" id="mf-pass" placeholder="Password" aria-labelledby="mf-pass-label">
+				<label for="mf-pass" id="mf-pass-label">Password</label>
+			</section>
+			<p>The <code>&lt;form&gt;</code> tag is the first element within the <code>&lt;article&gt;</code> tag.</p>
+			<div>
+				<pre><code class="language-html">&lt;dialog id="modal-form-example"&gt;
+	&lt;article&gt;
+		&lt;form action="javascript:void(0);" method="POST"&gt;
+			&lt;header&gt;
+				&lt;button aria-label="Close" rel="prev" data-target="modal-form-example" onclick="toggleModal(event)"&gt;&lt;/button&gt;
+				&lt;h3&gt;Modal with a Form!&lt;/h3&gt;
+			&lt;/header&gt;
+			&lt;section role="form"&gt;
+				&lt;input autofocus type="text" name="mf-name" id="mf-name" placeholder="Name"&gt;
+				&lt;label for="mf-name"&gt;Name&lt;/label&gt;
+			&lt;/section&gt;
+			&lt;section role="form"&gt;
+				&lt;input type="password" name="mf-pass" id="mf-pass" placeholder="Password"&gt;
+				&lt;label for="mf-pass"&gt;Password&lt;/label&gt;
+			&lt;/section&gt;
+			&lt;footer&gt;
+				&lt;div class="grid"&gt;
+					&lt;button role="button" class="secondary" data-target="modal-form-example" onclick="toggleModal(event)"&gt;&amp;cross; Cancel&lt;/button&gt;
+					&lt;div&gt;&lt;/div&gt;
+					&lt;button data-target="modal-form-example" onclick="toggleModal(event)"&gt;&amp;check; Confirm&lt;/button&gt;
+				&lt;/div&gt;
+			&lt;/footer&gt;
+		&lt;/form&gt;
+	&lt;/article&gt;
+&lt;/dialog&gt;</code></pre>
+			</div>
+			<footer>
+				<div class="grid">
+					<button role="button" class="secondary" data-target="modal-form-example" onclick="toggleModal(event)">&cross;
+						Cancel</button>
+					<div></div>
+					<button data-target="modal-form-example" onclick="toggleModal(event)">&check; Confirm</button>
+				</div>
+			</footer>
+		</form>
+	</article>
+</dialog>
+<!-- ./ Modal example -->

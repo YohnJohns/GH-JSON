@@ -1,0 +1,42 @@
+<!-- offset -->
+<article id="row-offsets">
+	<header>
+		<h2>Columns with offsets defined by breakpoints</h2>
+	</header>
+	<p>When defining multiple <code>.col-*-*</code> on the same element, the order your put the classes on the element
+		matter.</p>
+	<div class="row-fluid">
+		<div class="col-2 col-md-4">
+			<article class="pico-background-lime-750">col-2, col-md-4</article>
+		</div>
+		<div class="col-4 offset-8 col-md-6 offset-md-6">
+			<article class="pico-background-lime-750">col-4, offset-8, col-md-6, offset-md-6</article>
+		</div>
+	</div>
+	<div class="row-fluid">
+		<div class="col-5 offset-1 col-md-11">
+			<article class="pico-background-lime-550">col-5, offset-1, col-md-11</article>
+		</div>
+		<div class="col-2 col-md-6">
+			<article class="pico-background-lime-550">col-2, col-md-6</article>
+		</div>
+		<div class="col-3 offset-9 col-md-6 offset-md-6">
+			<article class="pico-background-lime-550">col-3, offset-9, col-md-6, offset-md-6</article>
+		</div>
+	</div>
+	<div class="row-fluid align-center">
+		<div class="col-3 col-md-12 col-lg-6">
+			<article class="pico-background-lime-850">col-3 col-md-12 col-lg-6</article>
+		</div>
+		<div class="col-3 col-md-12 col-lg-6">
+			<article class="pico-background-lime-850">col-3 col-md-12 col-lg-6</article>
+		</div>
+		<div class="col-4 col-md-6 col-lg-3">
+			<article class="pico-background-lime-850">col-4 col-md-6 col-lg-3</article>
+		</div>
+		<div class="col-6 offset-6 col-md-3 offset-md-9 col-lg-2 offset-lg-10">
+			<article class="pico-background-lime-850">col-6 offset-6 col-md-3 offset-md-9 col-lg-2 offset-lg-10 </article>
+		</div>
+	</div>
+</article>
+<!-- /row-offsets -->

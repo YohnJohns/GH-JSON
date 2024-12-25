@@ -1,33 +1,209 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Dynamic Page Loader</title>
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@yohns/picocss@2.2.1/css/pico.min.css" />
-	<style>
-		#main-content {
-			transition: filter 0.3s;
-		}
-		#loading-overlay {
-			position: fixed;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			background: rgba(0, 0, 0, 0.5);
-			color: white;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			font-size: 1.5em;
-			z-index: 1000;
-			display: none;
-		}
-	</style>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="color-scheme" content="light dark">
+	<title>Preview • Pico CSS</title>
+	<meta name="description" content="A pure HTML example, without dependencies.">
+	<!-- Backwards compatability -->
+	<link rel="icon" sizes="16x16 24x24 32x32 64x64" href="assets/imgs/favicon.ico">
+	<!-- All other browsers -->
+	<link rel="icon" type="image/png" sizes="32x32" href="assets/imgs/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="assets/imgs/favicon-16x16.png">
+	<!-- Google Search and Android Chrome -->
+	<link rel="icon" type="image/png" sizes="48x48" href="assets/imgs/favicon-48x48.png">
+	<link rel="icon" type="image/png" sizes="192x192" href="assets/imgs/favicon-192x192.png">
+	<!-- iPhone -->
+	<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="assets/imgs/favicon-180x180.png">
+	<!-- iPad Retina -->
+	<link rel="apple-touch-icon" type="image/png" sizes="167x167" href="assets/imgs/favicon-167x167.png">
+	<!-- Other iPads -->
+	<link rel="apple-touch-icon" type="image/png" sizes="152x152" href="assets/imgs/favicon-152x152.png">
+	<!-- Web application manifest -->
+	<link rel="manifest" href="assets/manifest.json">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css">
+
+	<!-- Pico.css -->
+	<link rel="stylesheet" href="assets/picocss/pico.min.css" id="theme-color-ss">
+	<link rel="stylesheet" href="assets/picocss/pico.colors.min.css">
+	<!--
+			Yohn's Simple CSS Class helpers
+			I might add these to the main PicoCSS later
+-->
+	<link rel="stylesheet" href="assets/css/basics.css" />
 </head>
+
 <body>
-<main class="container">
+<div class="container">
+	<div class="row-fluid">
+		<div class="col-12 col-lg-3 col-xl-2">
+			<!-- Header -->
+			<header>
+				<hgroup>
+						<svg style="display:none;" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 440 71">
+							<path fill="var(--yopico-logo-wordmark)"
+								d="m5 6 14 3 11 22L47 6l12 4-21 34v21l-10 2-3-23zm67 0 47 4v53l-32 4-22-4-1-49zm4 48h31l1-11-1-25H76zm57-48 45 1 3 37-39 4v18l-11 1zm8 30h29l-1-18h-27zm52-30 11 2v56l-13 1zm27 0 46 2-2 11h-38v35h39l1 11-46 2-6-5V11zm61 0 48 3 1 53-54 2-1-53zm5 48h32V18h-31z" />
+							<path fill="var(--yopico-logo-big-sparkle)"
+								d="m381.12 43.52-21.62-5.53c18.53-4.79 21.41-5.62 21.62-5.83.2-.21 5.91-22.76 6.06-22.95 5.13 17.6 6.5 22.76 6.67 22.95 20.8 5.38 21.15 5.67 21.15 5.91-19.52 5.06-21.44 5.59-21.47 5.59s-5.51 22.23-5.71 22.44l-6.7-22.59z" />
+							<path fill="var(--yopico-logo-bolts)"
+								d="m409.52 8.08 8.41 13.07-3.47 1.54 10.6 11.19-3.47 1.87 13.1 18.75-22.22-14.37 4.24-1.99-13.81-9.2 4.95-2.85-14.58-9.65zm-43.54 0-9.16 13.07 3.78 1.54-11.54 11.19 3.78 1.87-14.26 18.75 24.18-14.37-4.61-1.99 15.03-9.2-5.38-2.85 15.87-9.65-17.68-8.36z" />
+							<path fill="var(--yopico-logo-small-sparkles)"
+								d="m368.54 48.9-6.56-3.9c3.4 5.73 3.91 6.65 3.91 6.75s-3.87 7.16-3.88 7.24c5.36-3.16 6.9-4.12 6.98-4.12 6.33 3.74 6.48 3.75 6.54 3.69-3.58-6.04-3.92-6.65-3.93-6.66s3.84-6.92 3.84-7.03l-6.91 4.02zm37.15.81-6.56-3.9c3.4 5.73 3.91 6.65 3.91 6.75s-3.87 7.16-3.88 7.24c5.36-3.16 6.9-4.12 6.98-4.12 6.33 3.74 6.48 3.75 6.54 3.69-3.58-6.04-3.92-6.65-3.93-6.66s3.84-6.92 3.84-7.03l-6.91 4.02z" />
+						</svg>
+
+						<svg xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" class="pico-logo"
+							viewBox="0 0 370 164">
+							<path fill="var(--pico-logo-wordmark)"
+								d="m0,164l0,-101.28l21.18,0l1.29,13.31l0,87.97l-22.47,0zm42.93,-27.2c-5.95,0 -10.95,-1.49 -14.98,-4.49c-4.04,-3.08 -7.06,-7.47 -9.08,-13.16c-2.01,-5.69 -3.02,-12.44 -3.02,-20.26c0,-7.91 1.01,-14.66 3.02,-20.25c2.02,-5.69 5.04,-10.03 9.08,-13.02c4.03,-3.09 9.03,-4.63 14.98,-4.63c6.72,0 12.53,1.54 17.43,4.63c4.9,2.99 8.64,7.33 11.24,13.02c2.59,5.59 3.89,12.34 3.89,20.25c0,7.82 -1.3,14.57 -3.89,20.26c-2.6,5.69 -6.34,10.08 -11.24,13.16c-4.9,3 -10.71,4.49 -17.43,4.49zm-5.76,-20.83c2.88,0 5.42,-0.73 7.63,-2.17s3.99,-3.43 5.33,-5.94c1.35,-2.6 2.02,-5.59 2.02,-8.97c0,-3.37 -0.62,-6.31 -1.87,-8.82c-1.25,-2.61 -3.03,-4.63 -5.33,-6.08c-2.21,-1.45 -4.76,-2.17 -7.64,-2.17c-2.88,0 -5.47,0.72 -7.78,2.17c-2.21,1.45 -3.94,3.47 -5.18,6.08c-1.25,2.6 -1.88,5.54 -1.88,8.82c0,3.38 0.63,6.37 1.88,8.97c1.24,2.51 2.97,4.49 5.18,5.94c2.21,1.44 4.76,2.17 7.64,2.17zm50.63,19.09l0,-72.34l22.47,0l0,72.34l-22.47,0zm11.24,-81.6c-3.36,0 -6.34,-1.25 -8.93,-3.76c-2.5,-2.6 -3.75,-5.59 -3.75,-8.97c0,-3.57 1.25,-6.56 3.75,-8.97c2.59,-2.51 5.57,-3.76 8.93,-3.76c3.45,0 6.43,1.25 8.93,3.76c2.5,2.41 3.74,5.4 3.74,8.97c0,3.38 -1.24,6.37 -3.74,8.97c-2.5,2.51 -5.48,3.76 -8.93,3.76zm63.15,83.34c-7.69,0 -14.55,-1.59 -20.6,-4.77c-5.96,-3.28 -10.62,-7.77 -13.98,-13.46c-3.36,-5.79 -5.04,-12.35 -5.04,-19.68c0,-7.42 1.68,-13.98 5.04,-19.67c3.36,-5.69 7.97,-10.13 13.83,-13.31c5.96,-3.28 12.78,-4.92 20.46,-4.92c7.39,0 14.17,1.88 20.31,5.64c6.15,3.76 10.57,9.21 13.26,16.35l-21.33,7.23c-1.05,-2.31 -2.83,-4.19 -5.33,-5.64c-2.4,-1.54 -5.09,-2.31 -8.06,-2.31c-2.98,0 -5.62,0.72 -7.93,2.17c-2.2,1.35 -3.98,3.28 -5.33,5.78c-1.24,2.51 -1.87,5.4 -1.87,8.68s0.63,6.18 1.87,8.68c1.35,2.42 3.17,4.35 5.48,5.79c2.4,1.45 5.09,2.17 8.07,2.17c2.97,0 5.66,-0.77 8.06,-2.31s4.18,-3.57 5.33,-6.08l21.32,7.23c-2.78,7.24 -7.25,12.79 -13.39,16.64c-6.05,3.86 -12.78,5.79 -20.17,5.79zm78.63,0c-7.58,0 -14.31,-1.59 -20.16,-4.77c-5.77,-3.28 -10.33,-7.77 -13.69,-13.46c-3.27,-5.69 -4.9,-12.25 -4.9,-19.68c0,-7.42 1.63,-13.98 4.9,-19.67c3.26,-5.69 7.78,-10.13 13.54,-13.31c5.86,-3.28 12.49,-4.92 19.88,-4.92c7.59,0 14.26,1.64 20.03,4.92c5.85,3.18 10.42,7.62 13.68,13.31c3.27,5.69 4.9,12.25 4.9,19.67c0,7.43 -1.63,13.99 -4.9,19.68c-3.26,5.69 -7.78,10.18 -13.54,13.46c-5.67,3.18 -12.25,4.77 -19.74,4.77zm-0.14,-21.41c2.98,0 5.52,-0.68 7.63,-2.03c2.21,-1.44 3.94,-3.37 5.19,-5.79c1.25,-2.5 1.87,-5.4 1.87,-8.68c0,-3.28 -0.67,-6.12 -2.01,-8.53c-1.25,-2.51 -2.98,-4.44 -5.19,-5.79c-2.21,-1.45 -4.75,-2.17 -7.63,-2.17c-2.89,0 -5.43,0.72 -7.64,2.17c-2.21,1.35 -3.94,3.28 -5.19,5.79c-1.24,2.41 -1.87,5.25 -1.87,8.53c0,3.19 0.63,6.03 1.87,8.54c1.25,2.51 2.98,4.49 5.19,5.93c2.31,1.35 4.9,2.03 7.78,2.03z">
+							</path>
+							<path
+								d="m337.67,104.6a2,2 0 0 0 -1.15,1.15l-7.81,20.32c-0.66,1.71 -3.08,1.71 -3.74,0l-7.81,-20.32a2,2 0 0 0 -1.15,-1.15l-20.32,-7.81c-1.71,-0.66 -1.71,-3.08 0,-3.74l20.32,-7.81a2,2 0 0 0 1.15,-1.15l7.81,-20.32c0.66,-1.71 3.08,-1.71 3.74,0l7.81,20.32c0.2,0.53 0.62,0.95 1.15,1.15l20.32,7.81c1.71,0.66 1.71,3.08 0,3.74l-20.32,7.81z"
+								fill="var(--pico-logo-big-sparkle)"></path>
+							<path fill="var(--pico-logo-small-sparkles)"
+								d="m358.41,59.99c-0.66,1.71 -3.08,1.71 -3.74,0l-2.81,-7.32a2,2 0 0 0 -1.15,-1.15l-7.32,-2.81c-1.71,-0.66 -1.71,-3.08 0,-3.74l7.32,-2.81a2,2 0 0 0 1.15,-1.15l2.81,-7.32c0.66,-1.71 3.08,-1.71 3.74,0l2.81,7.32c0.2,0.53 0.62,0.95 1.15,1.15l7.32,2.81c1.71,0.66 1.71,3.08 0,3.74l-7.32,2.81a2,2 0 0 0 -1.15,1.15l-2.81,7.32z">
+							</path>
+							<path fill="var(--pico-logo-small-sparkles)"
+								d="m302.54,63.87a2,2 0 0 0 -1.15,1.15l-2.81,7.32c-0.66,1.71 -3.08,1.71 -3.74,0l-2.81,-7.32a2,2 0 0 0 -1.15,-1.15l-7.32,-2.81c-1.71,-0.66 -1.71,-3.08 0,-3.74l7.32,-2.81a2,2 0 0 0 1.15,-1.15l2.81,-7.32c0.66,-1.71 3.08,-1.71 3.74,0l2.81,7.32c0.2,0.53 0.62,0.95 1.15,1.15l7.32,2.81c1.71,0.66 1.71,3.08 0,3.74l-7.32,2.81z">
+							</path>
+							<path
+								d="m317.46,37.88c-0.66,1.71 -3.08,1.71 -3.74,0l-2.81,-7.32a2,2 0 0 0 -1.15,-1.15l-7.32,-2.81c-1.71,-0.66 -1.71,-3.08 0,-3.74l7.32,-2.81a2,2 0 0 0 1.15,-1.15l2.81,-7.32c0.66,-1.71 3.08,-1.71 3.74,0l2.81,7.32c0.2,0.53 0.62,0.95 1.15,1.15l7.32,2.81c1.71,0.66 1.71,3.08 0,3.74l-7.32,2.81a2,2 0 0 0 -1.15,1.15l-2.81,7.32z"
+								fill="var(--pico-logo-big-sparkle)"></path>
+						</svg>
+					<hr>
+					<p>A Pico CSS + example with addition to the standard Pico CSS library.</p>
+					<p>Demo page from <a href="https://picocss.com/docs/modal#utilities">picocss.com model docs</a></p>
+				</hgroup>
+				<details class="dropdown">
+					<summary role="button" class="secondary">Theme</summary>
+					<ul>
+						<li><a href="#" data-theme-switcher="auto">Auto</a></li>
+						<li><a href="#" data-theme-switcher="light">Light</a></li>
+						<li><a href="#" data-theme-switcher="dark">Dark</a></li>
+					</ul>
+				</details>
+
+				<details class="dropdown">
+					<summary style="background-color:var(--pico-primary-background); color: var(--pico-primary-inverse)">
+						Color Scheme</summary>
+					<ul class="three-columns">
+						<li><a class="change-theme"
+								style="border:none; margin:1px; color:#000; background-color: var(--pico-color-red-550) !important;"
+								data-theme="red" href="javascript:void(0);">Red</a></li>
+						<li><a class="change-theme"
+								style="border:none; margin:1px; color:#000; background-color: var(--pico-color-pink-550) !important;"
+								data-theme="pink" href="javascript:void(0);">Pink</a></li>
+						<li><a class="change-theme"
+								style="border:none; margin:1px; color:#000; background-color: var(--pico-color-fuchsia-550) !important;"
+								data-theme="fuchsia" href="javascript:void(0);">Fuchsia</a></li>
+						<li><a class="change-theme"
+								style="border:none; margin:1px; color:#000; background-color: var(--pico-color-purple-600) !important;"
+								data-theme="purple" href="javascript:void(0);">Purple</a></li>
+						<li><a class="change-theme"
+								style="border:none; margin:1px; color:#000; background-color: var(--pico-color-violet-600) !important;"
+								data-theme="violet" href="javascript:void(0);">Violet</a></li>
+						<li><a class="change-theme"
+								style="border:none; margin:1px; color:#000; background-color: var(--pico-color-indigo-600) !important;"
+								data-theme="indigo" href="javascript:void(0);">Indigo</a></li>
+						<li><a class="change-theme"
+								style="border:none; margin:1px; color:#000; background-color: var(--pico-color-blue-550) !important;"
+								data-theme="blue" href="javascript:void(0);">Blue</a></li>
+						<li><a class="change-theme"
+								style="border:none; margin:1px; color:#000; background-color: var(--pico-color-azure-550) !important;"
+								data-theme="azure" href="javascript:void(0);">Azure</a></li>
+						<li><a class="change-theme"
+								style="border:none; margin:1px; color:#000; background-color: var(--pico-color-cyan-550) !important;"
+								data-theme="cyan" href="javascript:void(0);">Cyan</a></li>
+						<li><a class="change-theme"
+								style="border:none; margin:1px; color:#000; background-color: var(--pico-color-jade-550) !important;"
+								data-theme="jade" href="javascript:void(0);">Jade</a></li>
+						<li><a class="change-theme"
+								style="border:none; margin:1px; color:#000; background-color: var(--pico-color-green-500) !important;"
+								data-theme="green" href="javascript:void(0);">Green</a></li>
+						<li><a class="change-theme"
+								style="border:none; margin:1px; color:#000; background-color: var(--pico-color-lime-200) !important;"
+								data-theme="lime" href="javascript:void(0);">Lime</a></li>
+						<li><a class="change-theme"
+								style="border:none; margin:1px; color:#000; background-color: var(--pico-color-yellow-100) !important;"
+								data-theme="yellow" href="javascript:void(0);">Yellow</a></li>
+						<li><a class="change-theme"
+								style="border:none; margin:1px; color:#000; background-color: var(--pico-color-amber-200) !important;"
+								data-theme="amber" href="javascript:void(0);">Amber</a></li>
+						<li><a class="change-theme"
+								style="border:none; margin:1px; color:#000; background-color: var(--pico-color-pumpkin-350) !important;"
+								data-theme="pumpkin" href="javascript:void(0);">Pumpkin</a></li>
+						<li><a class="change-theme"
+								style="border:none; margin:1px; color:#000; background-color: var(--pico-color-orange-500) !important;"
+								data-theme="orange" href="javascript:void(0);">Orange</a></li>
+						<li><a class="change-theme"
+								style="border:none; margin:1px; color:#000; background-color: var(--pico-color-sand-200) !important;"
+								data-theme="sand" href="javascript:void(0);">Sand</a></li>
+						<li><a class="change-theme"
+								style="border:none; margin:1px; color:#000; background-color: var(--pico-color-grey-300) !important;"
+								data-theme="grey" href="javascript:void(0);">Grey</a></li>
+						<li><a class="change-theme"
+								style="border:none; margin:1px; color:#000; background-color: var(--pico-color-zinc-550) !important;"
+								data-theme="zinc" href="javascript:void(0);">Zinc</a></li>
+						<li><a class="change-theme"
+								style="border:none; margin:1px; color:#000; background-color: var(--pico-color-slate-600) !important;"
+								data-theme="slate" href="javascript:void(0);">Slate</a></li>
+					</ul>
+				</details>
+
+				<aside>
+					<nav>
+						<ul>
+							<li><a class="load-page" href="data/tabs.json">Tabs [role=tablist]</a></li>
+							<li><a class="load-page" href="data/hamburger-menu.json">Hamburger Menu</a></li>
+							<li><a class="load-page" href="data/tooltip.json">Tooltip</a></li>
+							<li><a class="load-page" href="data/floating-labels.json">Floating Labels [role=form]</a></li>
+							<li><a class="load-page" href="data/validation.json">Validation</a></li>
+							<li><a class="load-page" href="data/group.json">Group</a></li>
+							<li><a class="load-page" href="data/rows.json">Row</a></li>
+							<li><a class="load-page" href="data/row-offsets.json">Row Offset</a></li>
+							<li><a class="load-page" href="data/row-alignments.json">Row Alignments</a></li>
+							<li><a class="load-page" href="data/row-breakpoints.json">Row Breakpoints</a></li>
+							<li><a class="load-page" href="data/modal.json">Modals</a></li>
+							<li><a class="load-page" href="data/popover.json">Popover (Alerts?)</a></li>
+							<li><a class="load-page" href="data/accordions.json">Accorddions</a></li>
+							<li><a class="load-page" href="data/timeline.json.json">Timeline</a></li>
+						</ul>
+					</nav>
+				</aside>
+			</header>
+			<!-- /Header -->
+		</div>
+
+		<div id="loading-overlay">Loading...</div>
+		<main class="col-12 col-lg-9 col-xl-10" id="main-content">
+
+		</main>
+	</div>
+</div>
+
+
+<!-- Footer -->
+<footer class="container">
+	<small>
+		Built with <a href="https://github.com/Yohn/PicoCSS">PicoCSS</a> •
+		<a href="https://github.com/Yohn/PicoCSS">
+			Source code
+		</a>
+	</small>
+</footer>
+<!-- ./ Footer -->
+
+<!-- Minimal theme switcher -->
+<script src="assets/js/MinimalThemeSwitcher.js"></script>
+
+<!-- Modal -->
+<script src="assets/js/Modal.js"></script>
+<!-- For the file uploader preview -->
+<script src="assets/js/FileValidator.js"></script>
+<!-- For the Tabs - [role=tablist] component. -->
+<script src="assets/js/PicoTabs.js"></script>
+<!--
 	<nav>
 		<a href="data/page1.json" class="load-page">Load Page 1</a>
 		<a href="data/page2.json" class="load-page">Load Page 2</a>
@@ -39,6 +215,9 @@
 		<p id="description">Click a link to load content.</p>
 	</div>
 </main>
+-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+
 <script src="assets/script.js"></script>
 </body>
 </html>

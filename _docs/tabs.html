@@ -1,0 +1,157 @@
+<article id="tabs">
+	<header>
+		<h2>Responsive Tabs <code>[role="tablist"]</code></h2>
+		<h6 class="fw-n">Classless!</h6>
+		<h6 class="fw-n">Javascirpt is required.</h6>
+	</header>
+	<p>Accessible friendly, with left and right arrow, home and end button triggers to switch between tabs.</p>
+	<p>Make sure to <a href="js/PicoTabs.js">Download PicoTabs.js</a></p>
+	<p>Ensure you have</p>
+	<p>To set up the tabs, follow these steps:</p>
+	<ol>
+		<li>
+			<strong>HTML Structure:</strong>
+			<ul>
+				<li>Each tab button must have the following attributes:
+					<ul>
+						<li><code>role="tab"</code></li>
+						<li><code>id="unique-tab-id"</code> - A unique ID for the tab</li>
+						<li><code>aria-selected="true/false"</code> - Indicates if the tab is selected</li>
+						<li><code>aria-controls="panel-id"</code> - The ID of the associated tab panel</li>
+						<li><code>tabindex="0/-1"</code> - Indicates if the tab is focusable</li>
+					</ul>
+				</li>
+				<li>Each tab panel must have the following attributes:
+					<ul>
+						<li><code>role="tabpanel"</code></li>
+						<li><code>id="panel-id"</code> - A unique ID for the panel</li>
+						<li><code>aria-labelledby="unique-tab-id"</code> - The ID of the associated tab</li>
+						<li><code>hidden</code> - Indicates if the panel is hidden (use <code>hidden</code> attribute for non-active panels)</li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<strong>JavaScript:</strong>
+			<p>The JavaScript file <code>PicoTabs.js</code> is required for the tabs to function correctly. Ensure you include it in your HTML file:</p>
+			<pre><code class="language-html">&lt;script src="js/PicoTabs.js"&gt;&lt;/script&gt;</code></pre>
+			<p>Initialize the tabs by adding the following code:</p>
+			<pre><code class="language-javascript">document.addEventListener("DOMContentLoaded", () => {
+new PicoTabs('[role="tablist"]');
+});</code></pre>
+		</li>
+		<li>
+			<strong>Keyboard Navigation:</strong>
+			<p>The following keypresses work for the tabs:</p>
+			<ul>
+				<li><code>ArrowLeft</code> - Move to the previous tab</li>
+				<li><code>ArrowRight</code> - Move to the next tab</li>
+				<li><code>Home</code> - Move to the first tab</li>
+				<li><code>End</code> - Move to the last tab</li>
+			</ul>
+		</li>
+	</ol>
+	<h3>Tab Example:</h3>
+	<div role="tablist">
+		<!-- Tab One -->
+		<button id="tabone" role="tab" tabindex="0" aria-selected="true" aria-controls="panel1">
+			Tab One
+		</button>
+		<div id="panel1" role="tabpanel" aria-labelledby="tabone" tabindex="0">
+			<h3>Tab One Content</h3>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+				dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+				ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+				fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+				deserunt mollit anim id est laborum.</p>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+				dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+				ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+				fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+				deserunt mollit anim id est laborum.</p>
+		</div>
+
+		<!-- Tab Two -->
+		<button id="tabtwo" role="tab" aria-selected="false" aria-controls="panel2" tabindex="-1">
+			Tab Two
+		</button>
+		<div id="panel2" role="tabpanel" aria-labelledby="tabtwo" hidden>
+			<div>
+				<form action="javascript:void(0);">
+					<h2>Login Below</h2>
+					<section role="form">
+						<input type="email" id="email" name="email" placeholder="Email:" required>
+						<label for="email">Email:</label>
+					</section>
+					<section role="form">
+						<input type="password" id="password" name="password" placeholder="Password:" required>
+						<label for="password">Password:</label>
+					</section>
+					<input type="submit" value="Submit">
+				</form>
+			</div>
+		</div>
+
+		<!-- Tab Three -->
+		<button id="tabthree" role="tab" aria-selected="false" aria-controls="panel3" tabindex="-1">
+			Tab Three
+		</button>
+		<div id="panel3" role="tabpanel" aria-labelledby="tabthree" hidden>
+			<h2>Tab Three Content</h2>
+			<table class="striped">
+				<tbody>
+					<tr>
+						<td data-theme="light"><strong>aaa:</strong></td>
+						<td>aaaa</td>
+					</tr>
+					<tr>
+						<td data-theme="light"><strong>aaa:</strong></td>
+						<td>aaaa</td>
+					</tr>
+					<tr data-theme="light">
+						<td><strong>aaa:</strong></td>
+						<td>aaaa</td>
+					</tr>
+					<tr>
+						<td><strong>aaa:</strong></td>
+						<td>aaaa</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<hr>
+	<details>
+		<summary>Show the code:</summary>
+		<div>
+			<pre><code class="language-html">&lt;div role="tablist"&gt;
+&lt;!-- Tab One --&gt;
+&lt;button id="tabone" role="tab" tabindex="0" aria-selected="true" aria-controls="panel1"&gt;
+Tab One
+&lt;/button&gt;
+&lt;div id="panel1" role="tabpanel" aria-labelledby="tabone" tabindex="0"&gt;
+&lt;h1&gt;Tab One Content&lt;/h1&gt;
+&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit...&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;!-- Tab Two --&gt;
+&lt;button id="tabtwo" role="tab" aria-selected="false" aria-controls="panel2" tabindex="-1"&gt;
+Tab Two
+&lt;/button&gt;
+&lt;div id="panel2" role="tabpanel" aria-labelledby="tabtwo" hidden&gt;
+&lt;h1&gt;Tab Two Content&lt;/h1&gt;
+&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit...&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;!-- Tab Three --&gt;
+&lt;button id="tabthree" role="tab" aria-selected="false" aria-controls="panel3" tabindex="-1"&gt;
+Tab Three
+&lt;/button&gt;
+&lt;div id="panel3" role="tabpanel" aria-labelledby="tabthree" hidden&gt;
+&lt;h1&gt;Tab Three Content&lt;/h1&gt;
+&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit...&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+		</div>
+	</details>
+</article>

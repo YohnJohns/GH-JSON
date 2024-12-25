@@ -1,0 +1,4 @@
+{
+    "title": "Popovers",
+    "html": "<article id=\"popover\">\r\n\t<header>\r\n\t\t<h2>Popovers<\/h2>\r\n\t\t<p>Popovers will replace the notifications below.<\/p>\r\n\t<\/header>\r\n\t<button class=\"action\" popovertarget=\"popover-example1\">Backdrop Close<\/button>\r\n\t<button popovertarget=\"popover-example2\" popovertargetaction=\"show\">Manual Close<\/button>\r\n\t<article id=\"popover-example1\" popover>\r\n\t\t<header>\r\n\t\t\t<h2>Popover<\/h2>\r\n\t\t<\/header> Click\/Tap everywhere else to close <footer>Footer<\/footer>\r\n\t<\/article>\r\n\t<article id=\"popover-example2\" popover=\"manual\"> Some Feedback Message With Close Button <button\r\n\t\t\tpopovertarget=\"popover-example2\" popovertargetaction=\"hide\">&times;<\/button>\r\n\t<\/article>\r\n<\/article>"
+}
